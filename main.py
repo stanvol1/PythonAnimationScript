@@ -1,10 +1,14 @@
 import pygame
 import sys
 import scripts.spritesheet as spritesheet
-
+import os
+import subprocess
+import shutil
 class Animation():
     def __init__(self):
         pygame.init()
+        self.animation_cooldown = int(1)
+    os.mkdir("frames")
     
 
     def animation(self):
@@ -32,6 +36,7 @@ class Animation():
             self.anim_list.append(self.sprite_sheet.get_image(i, 100, 100, 10))
         self.last_update = pygame.time.get_ticks()
         run = True
+        frame_filenames = []
         while run:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -43,12 +48,23 @@ class Animation():
                 self.last_update = self.current_time
                 if self.frame >= self.anim_steps:
                     run = False
-                    print("end of anim")
-                    pygame.quit()
-                    sys.exit()
-            self.screen.fill((50, 50, 50))
-            self.screen.blit(self.anim_list[self.frame], (0, 0))
+                    fps = 1000/self.animation_cooldown
+                    os.system('cd frames')
+                    command = "ffmpeg -framerate {fps} -i frame%04d.png output.mp4"
+                    try:
+                        os.system(command)
+                    except: 
+                        print("Do you have ffmpeg installed? Consult the README for more info")
+                    output_file = "animation.mp4"
+            if self.frame < self.anim_steps:
+                self.screen.fill((50, 50, 50))
+                self.screen.blit(self.anim_list[self.frame], (0, 0))
+                frame_filename = f"frames/f_{self.frame:05d}.png"
+                pygame.image.save(self.screen, frame_filename)
+                frame_filenames.append(frame_filename)
             pygame.display.flip()
             pygame.time.delay(20)
+
+
 
 Animation().animation()
