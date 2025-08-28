@@ -2,7 +2,6 @@ import pygame
 import sys
 import scripts.spritesheet as spritesheet
 import os
-import subprocess
 import shutil
 class Animation():
     def __init__(self):
@@ -25,45 +24,45 @@ class Animation():
         self.frame = 0
         while loop2:
             try:
-                self.animation_cooldown = int(input("Animation speed in milliseconds: "))
+                self.animation_cooldown = int(input("Animation delay in milliseconds (how much delay you want between frames, bigger = slower): "))
                 loop2 = False
             except ValueError:
                 print("Please enter an integer.")
         loop3 = True
         while loop3:
             try:
-                self.animation_scale_x = int(input("screen scale 1 (format xxxx) "))
+                self.animation_scale_x = int(input("screen scale 1 (how wide you want the screen to be. For frames 100x100, this is 1000) "))
                 loop3 = False
             except:
-                print("Please enter the right scale")
+                print("Please enter an integer.")
         loop4 = True
         while loop4:
             try:
-                self.animation_scale_y = int(input("screen scale 2 (format xxxx) "))
+                self.animation_scale_y = int(input("screen scale 2 (how wide you want the screen to be. For frames 100x100, this is 1000) "))
                 loop4 = False
             except:
-                print("Please enter the right scale")
+                print("Please enter an integer.")
         loop5 = True
         while loop5:
             try:
-                self.frame_width = int(input("how wide is each frame? "))
+                self.frame_width = int(input("how wide is each frame? (y axis) "))
                 loop5 = False
             except:
-                print("Please enter the right scale")
+                print("Please enter an integer.")
         loop6 = True
         while loop6:
             try:
-                self.frame_height = int(input("how tall is each frame? "))
+                self.frame_height = int(input("how tall is each frame? (x axis) "))
                 loop6 = False
             except:
-                print("Please enter the right scale")
+                print("Please enter an integer.")
         loop7 = True
         while loop7:
             try:
-                self.frame_space = int(input("how much space is in between each frame "))
+                self.frame_space = int(input("how much space is in between each frame (usually about 10, tweak it a bit to find the exact value) "))
                 loop7 = False
             except:
-                print("Please enter the right scale")
+                print("Please enter an integer")
         self.screen = pygame.display.set_mode((self.animation_scale_x, self.animation_scale_y))
         self.image = pygame.image.load("assets/anim.png").convert_alpha()
         self.sprite_sheet = spritesheet.SpriteSheet(self.image)
