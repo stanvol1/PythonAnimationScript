@@ -11,3 +11,9 @@ Stolen partly from a youtube tutorial for pygame. The Mp4 saving thing that I'm 
 ### Pygame is also needed for this to run properly, as I used it for the graphics (sorry). To install pygame, run pip install pygame in the terminal AFTER having installed python.
 # WARNING
 ## I am not a good developer, I may have inadvertently put something in here that could mess up your pc. It uses system commands. So please, use at your own risk. Check all the code before you use it, and do not use it if you don't understand what some of the code does/means, especially the os stuff. If you run into bugs, report them to me at stanvol234@gmail.com.
+# Bugs
+### If you're using ubuntu linux, depending on the video viewing software you're using, the video may look corrupted. Try opening it in different video viewers. I found that I could see it in vscode (ik, weird).
+### I don't know what bugs this will have on windows, however I do know that sometimes python files have trouble with permissions on there. If this happens, run it as admin.
+### If you find any other bugs, report them to me at the email listed earlier. 
+# License and copyright
+### Honestly, it's open source for a reason. Do what you want with it. Idc if you credit me or not. Have fun with it!
