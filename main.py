@@ -63,6 +63,20 @@ class Animation():
                 loop7 = False
             except:
                 print("Please enter an integer")
+        loop8 = True
+        while loop8:
+                self.frame_keep = input("do you want to keep each frame as a png? (y/n) ").lower()
+                if self.frame_keep == "y":
+                    self.keep_frames = True
+                    loop8 = False
+                elif self.frame_keep == "n":
+                    self.keep_frames = False
+                    loop8 = False
+                else:
+                    print("Please enter y or n")
+                    continue
+                loop8 = False
+
         self.screen = pygame.display.set_mode((self.animation_scale_x, self.animation_scale_y))
         self.image = pygame.image.load("assets/anim.png").convert_alpha()
         self.sprite_sheet = spritesheet.SpriteSheet(self.image)
@@ -72,6 +86,12 @@ class Animation():
         run = True
         frame_filenames = []
         while run:
+            if self.frame < self.anim_steps:
+                self.screen.fill((50, 50, 50))
+                self.screen.blit(self.anim_list[self.frame], (0, 0))
+                frame_filename = f"frames/f_{self.frame:04d}.png"
+                frame_filenames.append(frame_filename)
+            pygame.image.save(self.screen, frame_filename)
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
@@ -88,16 +108,17 @@ class Animation():
                     command = f'ffmpeg -framerate {fps} -i frames/f_%04d.png {output_file}'
                     try:
                         os.system(command)
-                        shutil.rmtree('frames')
+                        loop8 = True
+                        if self.keep_frames:
+                            print("kept frames")
+                        else:
+                            shutil.rmtree("frames")
+                        
                     except: 
                         print("Do you have ffmpeg installed? Consult the README for more info")
 
-            if self.frame < self.anim_steps:
-                self.screen.fill((50, 50, 50))
-                self.screen.blit(self.anim_list[self.frame], (0, 0))
-                frame_filename = f"frames/f_{self.frame:04d}.png"
-                pygame.image.save(self.screen, frame_filename)
-                frame_filenames.append(frame_filename)
+
+            
             pygame.display.flip()
             pygame.time.delay(20)
 
