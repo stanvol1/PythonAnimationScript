@@ -3,7 +3,7 @@ Quick animation script to allow you to animate a spritesheet in pygame quickly.
 Stolen partly from a youtube tutorial for pygame. The Mp4 saving thing that I'm adding is made by me.
 
 # WARNING
-## I am not a good developer, I may have inadvertently put something in here that could mess up your pc. It uses system commands. So please, use at your own risk. Check all the code before you use it, and do not use it if you don't understand what some of the code does/means, especially the os stuff. If you run into bugs, report them to me at stanvol234@gmail.com.
+## I am not a good developer, I may have inadvertently put something in here that could mess up your pc. It uses system commands. So please, use at your own risk. Check all the code before you use it, and do not use it if you don't understand what some of the code does/means, especially the os stuff. If you run into bugs, report them to me at stanvol234@gmail.com or open an issue on this repo.
 
 # How to use
 ### 1: Go into assets and place your spritesheet. Rename it to anim.png (I may change this later)
