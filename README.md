@@ -9,3 +9,5 @@ Stolen partly from a youtube tutorial for pygame. The Mp4 saving thing that I'm 
 ### FFMPEG is needed for it to work. On windows, ffmpeg can be installed through the official website. On linux, it can be installed through the terminal command sudo apt install ffmpeg.
 ### The Python interpreter is also needed for the project to run. Go to python.org and download the latest version,.
 ### Pygame is also needed for this to run properly, as I used it for the graphics (sorry). To install pygame, run pip install pygame in the terminal AFTER having installed python.
+# WARNING
+## I am not a good developer, I may have inadvertently put something in here that could mess up your pc. It uses system commands. So please, use at your own risk. Check all the code before you use it, and do not use it if you don't understand what some of the code does/means, especially the os stuff. If you run into bugs, report them to me at stanvol234@gmail.com.
