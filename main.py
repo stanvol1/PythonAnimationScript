@@ -47,12 +47,13 @@ class Animation():
                 self.frame += 1
                 self.last_update = self.current_time
                 if self.frame >= self.anim_steps:
+                    self.int_animation_cooldown = int(self.animation_cooldown)
                     run = False
-                    fps = 1000/self.animation_cooldown
+                    fps = 1000/self.int_animation_cooldown
                     os.system('cd frames')
-                    command = "ffmpeg -framerate {fps} -i frame%04d.png output.mp4"
+                    command = "ffmpeg -framerate {fps} -i frame%05d.png output.mp4"
                     try:
-                        os.system(command)
+                        print("thing")
                     except: 
                         print("Do you have ffmpeg installed? Consult the README for more info")
                     output_file = "animation.mp4"
