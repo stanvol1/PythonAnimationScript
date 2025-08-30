@@ -103,11 +103,12 @@ class Animation():
                 if self.frame >= self.anim_steps:
                     output_file = "animation.mp4"
                     run = False
-                    fps = 1000/self.animation_cooldown 
+                    fps = 1000/self.animation_cooldown * 0.9
                     os.system('cd frames')
-                    command = f'ffmpeg -framerate {fps} -i frames/f_%04d.png {output_file}'
+                    command = f'ffmpeg -framerate {fps} -i frames/f_%04d.png -c:v libx264 -pix_fmt yuv420p {output_file}'
                     try:
                         os.system(command)
+                        loop8 = True
                         if self.keep_frames:
                             print("kept frames")
                         else:
